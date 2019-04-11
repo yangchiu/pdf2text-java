@@ -1,4 +1,4 @@
-# Tag Superscripts and Titles of a Journal Paper PDF File with PDFBox
+# Tag Superscripts and Titles in a Journal Paper PDF File with PDFBox
 - Based on Apache PDFBox, extends PDFTextStripper class
 
 - If the Y-scale of a word is smaller than the average size, it would be regarded as a superscript.
