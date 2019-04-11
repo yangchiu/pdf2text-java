@@ -7,9 +7,8 @@
 - If a superscript found in the document, it would be tagged as \<sup>superscript\</sup>
 - If a title found in the document, it would be tagged as <title>title</title> 
 
-#### Prerequisite
-* Java
-* Python
+#### Dependency
+* Apache PDFBox
 
 #### Usage
 Java:
