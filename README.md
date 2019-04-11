@@ -17,5 +17,5 @@ $java -jar pdfbox_sup_title.jar your_pdf_file
 ```
 Python:
 ```python
-$python your_pdf_file
+$python pdfbox_sup_title.py your_pdf_file
 ```
