@@ -12,6 +12,8 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 
+import java.util.logging.Logger;
+
 /**
  * Tag words smaller than average size as <sup></sup>
  * and
@@ -21,7 +23,7 @@ public class CustomPDFTextStripper extends PDFTextStripper
 {
 
 	protected float contentYScale;
-	protected HashMap<Float, Integer> mapOfYScales;
+	protected HashMap<Float, Integer> mapOfYScales = new HashMap<Float, Integer>();
 	protected final String openSup = "<sup>";
 	protected final String closedSup = "</sup>";
 	protected final String openTitle = "<title>";
@@ -75,6 +77,7 @@ public class CustomPDFTextStripper extends PDFTextStripper
         }
         else
         {
+        	Logger.getLogger("org.apache.pdfbox").setLevel(java.util.logging.Level.OFF);
             try (PDDocument document = PDDocument.load(new File(args[0])))
             {
                 PDFTextStripper stripper = new CustomPDFTextStripper();
@@ -89,7 +92,6 @@ public class CustomPDFTextStripper extends PDFTextStripper
     @Override
     protected void writePage() throws IOException
     {
-    	mapOfYScales = new HashMap<Float, Integer>();
     	//System.out.println(charactersByArticle);
     	for(List<TextPosition> textList : charactersByArticle)
     	{
@@ -106,7 +108,6 @@ public class CustomPDFTextStripper extends PDFTextStripper
     			}
     		}
     	}
-    	//System.out.println(mapOfYScales);
     	contentYScale = 0;
     	int tempMaxCount = 0;
     	for(Map.Entry<Float, Integer> entry : mapOfYScales.entrySet())
@@ -177,6 +178,7 @@ public class CustomPDFTextStripper extends PDFTextStripper
     					break;
     			}
     		}
+    		
     	}
 
     	if(!stack.isEmpty())
